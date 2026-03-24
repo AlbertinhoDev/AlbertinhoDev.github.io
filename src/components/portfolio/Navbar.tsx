@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -23,25 +24,39 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/80 backdrop-blur-lg border-b border-border" : ""
-      }`}
+      className="fixed left-0 right-0 top-0 z-50 px-4 pt-4"
     >
-      <div className="container max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="font-semibold text-foreground tracking-tight">
-          AG
+      <div
+        className={`mx-auto flex h-16 max-w-6xl items-center justify-between rounded-full border px-4 transition-all duration-300 md:px-6 ${
+          scrolled
+            ? "border-white/12 bg-background/78 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.75)] backdrop-blur-xl"
+            : "border-white/8 bg-background/42 backdrop-blur-md"
+        }`}
+      >
+        <a href="#" className="flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-sm font-semibold text-foreground">
+            AG
+          </span>
+          <span className="hidden text-sm font-medium text-text-secondary sm:block">
+            Mobile Engineer / Go Transition
+          </span>
         </a>
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-text-secondary hover:text-foreground transition-colors"
+              className="text-sm text-text-secondary transition-colors hover:text-foreground"
             >
               {link.label}
             </a>
           ))}
         </div>
+        <Button variant="hero-outline" size="sm" asChild className="hidden md:inline-flex">
+          <a href="https://github.com/AlbertinhoDev" target="_blank" rel="noopener noreferrer">
+            GitHub
+          </a>
+        </Button>
       </div>
     </motion.nav>
   );

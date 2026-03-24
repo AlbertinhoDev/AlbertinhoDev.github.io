@@ -1,33 +1,55 @@
-import { Github, Linkedin, Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import SectionWrapper, { SectionTitle, SectionSubtitle } from "./SectionWrapper";
+import { Github, Linkedin, Mail } from "lucide-react";
+import SectionWrapper, { SectionTitle } from "./SectionWrapper";
 
 const contacts = [
-  { label: "GitHub", href: "https://github.com/AlbertinhoDev", icon: Github },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/albert-ganiev-b877b6331", icon: Linkedin },
-  { label: "Email", href: "mailto:ganiev.albert.len@gmail.com", icon: Mail },
+  {
+    label: "Email",
+    value: "ganiev.albert.len@gmail.com",
+    href: "mailto:ganiev.albert.len@gmail.com",
+    icon: Mail,
+  },
+  {
+    label: "LinkedIn",
+    value: "www.linkedin.com/in/albert-ganiev-b877b6331",
+    href: "https://www.linkedin.com/in/albert-ganiev-b877b6331",
+    icon: Linkedin,
+  },
+  {
+    label: "GitHub",
+    value: "github.com/AlbertinhoDev",
+    href: "https://github.com/AlbertinhoDev",
+    icon: Github,
+  },
 ];
 
 const ContactSection = () => {
   return (
     <SectionWrapper id="contact">
-      <SectionTitle>Get in Touch</SectionTitle>
-      <SectionSubtitle>Open to opportunities, collaborations, and technical conversations.</SectionSubtitle>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {contacts.map((contact, i) => (
+      <span className="section-label">Contact</span>
+      <SectionTitle>Open to product-focused engineering conversations.</SectionTitle>
+      <div className="grid gap-4 md:grid-cols-3">
+        {contacts.map((contact, index) => (
           <motion.a
             key={contact.label}
             href={contact.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 15 }}
+            target={contact.href.startsWith("mailto:") ? undefined : "_blank"}
+            rel={contact.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.3, delay: i * 0.08 }}
-            className="flex flex-col items-center gap-3 p-6 rounded-lg border border-border bg-card card-hover text-center"
+            transition={{ duration: 0.35, delay: index * 0.06 }}
+            className="premium-panel card-hover flex min-h-[11rem] flex-col justify-between p-6"
           >
-            <contact.icon className="h-6 w-6 text-primary" />
-            <span className="text-sm font-medium text-foreground">{contact.label}</span>
+            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-primary">
+              <contact.icon className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.28em] text-text-tertiary">
+                {contact.label}
+              </p>
+              <p className="text-sm leading-7 text-text-secondary">{contact.value}</p>
+            </div>
           </motion.a>
         ))}
       </div>

@@ -11,11 +11,11 @@ const SectionWrapper = ({ id, children, className = "" }: SectionWrapperProps) =
   return (
     <section id={id} className={`section-spacing ${className}`}>
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 36 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="container max-w-5xl mx-auto px-6"
+        transition={{ duration: 0.65, ease: "easeOut" }}
+        className="container max-w-6xl mx-auto px-6"
       >
         {children}
       </motion.div>
@@ -24,11 +24,13 @@ const SectionWrapper = ({ id, children, className = "" }: SectionWrapperProps) =
 };
 
 export const SectionTitle = ({ children }: { children: ReactNode }) => (
-  <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">{children}</h2>
+  <h2 className="headline-tight mb-4 max-w-4xl text-3xl font-semibold leading-tight md:text-5xl">
+    {children}
+  </h2>
 );
 
 export const SectionSubtitle = ({ children }: { children: ReactNode }) => (
-  <p className="text-text-secondary text-lg max-w-2xl mb-12 leading-relaxed">{children}</p>
+  <p className="mb-12 max-w-3xl text-base leading-8 text-text-secondary md:text-lg">{children}</p>
 );
 
 export default SectionWrapper;

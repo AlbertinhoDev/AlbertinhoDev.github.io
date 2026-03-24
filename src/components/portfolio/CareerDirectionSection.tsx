@@ -1,14 +1,27 @@
 import SectionWrapper, { SectionTitle } from "./SectionWrapper";
 
+const growthAreas = ["Go", "Reliability", "Concurrency", "System design"];
+
 const CareerDirectionSection = () => {
   return (
     <SectionWrapper id="direction">
-      <SectionTitle>Where I'm Growing</SectionTitle>
-      <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-3xl">
-        I am currently expanding from mobile development into backend engineering using Go,
-        focusing on reliability, concurrency, and system design — while keeping the same
-        architectural rigor that drives my iOS work.
-      </p>
+      <div className="premium-panel-strong grid gap-8 p-7 md:grid-cols-[1fr_auto] md:items-center md:p-9">
+        <div>
+          <span className="section-label">Where I'm Growing</span>
+          <SectionTitle>I am actively expanding from mobile engineering into backend development with Go.</SectionTitle>
+          <p className="max-w-3xl text-base leading-8 text-text-secondary md:text-lg">
+            I am actively expanding from mobile engineering into backend development with Go,
+            focusing on reliability, concurrency, and system design.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {growthAreas.map((item) => (
+            <span key={item} className="muted-chip">
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
     </SectionWrapper>
   );
 };

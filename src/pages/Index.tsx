@@ -12,17 +12,23 @@ import Footer from "@/components/portfolio/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-[-10%] top-[12%] h-[28rem] w-[28rem] rounded-full bg-primary/10 blur-[140px]" />
+        <div className="absolute right-[-12%] top-[34%] h-[24rem] w-[24rem] rounded-full bg-accent/10 blur-[140px]" />
+      </div>
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <EngineeringFocusSection />
-      <SkillsSection />
-      <ProjectsSection />
-      <MoreProjectsSection />
-      <CareerDirectionSection />
-      <OngoingWorkSection />
-      <ContactSection />
+      <main className="relative z-10">
+        <HeroSection />
+        <AboutSection />
+        <EngineeringFocusSection />
+        <SkillsSection />
+        <ProjectsSection />
+        <MoreProjectsSection />
+        <CareerDirectionSection />
+        <OngoingWorkSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );
